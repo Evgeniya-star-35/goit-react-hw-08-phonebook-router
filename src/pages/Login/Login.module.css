@@ -1,18 +1,34 @@
  .form {
-    width: 320,
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 250px;
+  padding: 20px;
+  border: 5px solid #558cdd;
+  border-radius: 20px;
+  margin: 40px auto;
+  background: linear-gradient(
+90deg,#a188fc 0,#2eeade 50%,#a188fc);
+}
+.form:hover{
+   text-shadow:10px 12px 10px red,-3px -3px 10px yellow;
+}
+
   .title{
+    text-align: center;
     margin-top: 15px;
     color: rgb(79, 121, 189);
     text-shadow:3px 3px 10px red,-3px -3px 10px yellow;
   }
   
   .label{
-      display: flex;
+    display: flex;
     flex-direction: column;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 15;
+    margin-bottom: 10px;
     color: rgb(67, 140, 236);
 }
 .label:hover{

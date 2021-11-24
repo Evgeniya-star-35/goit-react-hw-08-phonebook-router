@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import AppBar from '../AppBar/AppBar';
@@ -15,9 +15,9 @@ const HomePage = lazy(() =>
     '../../pages/HomePage/HomePage.js' /* webpackChunkName: "home-page" */
   ),
 );
-const Registration = lazy(() =>
+const Register = lazy(() =>
   import(
-    '../../pages/Registration/Registration.js' /* webpackChunkName: "register-page" */
+    '../../pages/Register/Register.js' /* webpackChunkName: "register-page" */
   ),
 );
 const Login = lazy(() =>
@@ -28,7 +28,6 @@ const Phonebook = lazy(() =>
     '../../pages/Phonebook/Phonebook.js' /* webpackChunkName: "phonebook-page" */
   ),
 );
-
 const App = () => {
   const dispatch = useDispatch();
   const isFetchCurrentUser = useSelector(getIsFetchCurrentUser);
@@ -42,26 +41,21 @@ const App = () => {
         <AppBar />
         <Container>
           <Suspense fallback={<Loader />}>
-            <Switch>
-              <PublicRoute exact path="/" component={HomePage}></PublicRoute>
-
-              <PublicRoute path="/register" redirectTo="/" restricted>
-                <Registration />
-              </PublicRoute>
-
-              <PublicRoute
-                path="/login"
-                restricted
-                redirectTo="/"
-                component={Login}
-              ></PublicRoute>
-
-              <PrivateRoute
+            <Routes>
+              <Route path="/" element={<PublicRoute component={HomePage} />} />
+              <Route
                 path="/contacts"
-                component={Phonebook}
-                redirectTo="/login"
+                element={<PrivateRoute component={Phonebook} />}
               />
-            </Switch>
+              <Route
+                path="/login"
+                element={<PublicRoute component={Login} />}
+              />
+              <Route
+                path="/register"
+                element={<PublicRoute component={Register} />}
+              />
+            </Routes>
           </Suspense>
         </Container>
       </>

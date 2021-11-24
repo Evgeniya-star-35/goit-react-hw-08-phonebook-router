@@ -16,21 +16,26 @@ export default function ContactsList() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  const handleDeleteContact = id => {
+    dispatch(deleteContact(id));
+  };
+
   return (
     <ul>
-      {contacts.map(({ name, number, id }) => (
-        <li className={s.item} key={id}>
-          <Contact name={name} number={number} />
+      {contacts.length > 0 &&
+        contacts.map(({ name, number, id }) => (
+          <li className={s.item} key={id}>
+            <Contact name={name} number={number} />
 
-          <button
-            className={s.button}
-            type="button"
-            onClick={() => dispatch(deleteContact(id))}
-          >
-            Delete
-          </button>
-        </li>
-      ))}
+            <button
+              className={s.button}
+              type="button"
+              onClick={() => handleDeleteContact(id)}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
     </ul>
   );
 }

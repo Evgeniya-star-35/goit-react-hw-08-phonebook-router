@@ -21,8 +21,9 @@
     font-weight: bold;
     font-size: 12px;
     color: rgb(22, 35, 78);
-    background-color: rgb(130, 213, 238);
-    border-radius: 7px;
+     background: linear-gradient(
+90deg,#a188fc 0,#2eeade 50%,#a188fc);
+    border-radius: 10px;
   }
   .button:hover {
     text-shadow: 3px 3px 10px red, -3px -3px 10px yellow;

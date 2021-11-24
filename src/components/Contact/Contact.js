@@ -5,9 +5,6 @@ export default function Contact({ name, number }) {
     <>
       <span className={s.name}>{name}:</span>
       <span className={s.number}>{number}</span>
-      {/* <p>
-        {name}: {number}
-      </p> */}
     </>
   );
 }

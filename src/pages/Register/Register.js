@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/auth-operations';
 import { BtnSubmit } from '../../components/BtnSubmit/BtnSubmit';
-import s from './Registration.module.css';
+import s from './Register.module.css';
 
 export default function RegisterView() {
   const dispatch = useDispatch();

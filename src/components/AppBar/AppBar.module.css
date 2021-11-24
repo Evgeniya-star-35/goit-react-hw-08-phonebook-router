@@ -2,5 +2,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 1px solid #2A363B;
+    border-bottom: 2px solid #13a3e0;
+     background: linear-gradient(
+90deg,#a188fc 0,#2eeade 50%,#a188fc);
   }
