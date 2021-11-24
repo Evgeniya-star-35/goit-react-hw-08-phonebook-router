@@ -1,0 +1,29 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 15px 15px 25px;
+  background-color: #558cdd;
+  border-radius: 50px;
+  border: 1px solid #4e7fca;
+  margin: 30px;
+  box-shadow: 0 0 29px #064e4e;
+}
+.item:not(:last-child) {
+  margin-bottom: 10px;
+}
+.button {
+  padding: 3px 5px;
+  cursor: pointer;
+  border: 1px solid rgb(139, 119, 119);
+  border-radius: 20px;
+  background: linear-gradient(
+90deg,#a188fc 0,#2eeade 50%,#a188fc);
+  background-size: 200%;
+  background-position: 100%;
+}
+.button:hover,
+.button:focus {
+  background-color: rgb(149, 219, 240);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+}
