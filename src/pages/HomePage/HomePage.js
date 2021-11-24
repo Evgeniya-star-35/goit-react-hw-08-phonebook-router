@@ -4,8 +4,7 @@ const HomePage = () => {
   return (
     <>
       <h1 className={s.title}>
-        <b className={s.text}>Welcome!</b> To use the Phone Book, please log in
-        or sign up.
+        <b className={s.text}>Welcome!</b> Enjoy using the phonebook!
       </h1>
     </>
   );
