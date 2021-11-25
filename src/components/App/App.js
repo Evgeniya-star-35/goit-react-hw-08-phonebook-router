@@ -6,11 +6,15 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AppBar from '../AppBar/AppBar';
-import { getIsFetchCurrentUser } from '../../redux/auth/auth-selectors';
+import {
+  getIsFetchCurrentUser,
+  getIsAuth,
+} from '../../redux/auth/auth-selectors';
 import PrivateRoute from '../../routes/PrivateRoute';
 import PublicRoute from '../../routes/PublicRoute';
 import Container from '../../components/Container';
 import { getCurrentUser } from '../../redux/auth/auth-operations';
+import { fetchContacts } from '../../redux/Phonebook/phonebook-operations';
 
 const HomePage = lazy(() =>
   import(
@@ -33,9 +37,11 @@ const Phonebook = lazy(() =>
 const App = () => {
   const dispatch = useDispatch();
   const isFetchCurrentUser = useSelector(getIsFetchCurrentUser);
+  const isAuth = useSelector(getIsAuth);
 
   useEffect(() => {
     dispatch(getCurrentUser());
+    dispatch(fetchContacts());
   }, [dispatch]);
   return (
     !isFetchCurrentUser && (
@@ -45,18 +51,21 @@ const App = () => {
         <Container>
           <Suspense fallback={<Loader />}>
             <Routes>
-              <Route path="/" element={<PublicRoute component={HomePage} />} />
+              <Route
+                path="/"
+                element={<PublicRoute isAuth={isAuth} component={HomePage} />}
+              />
               <Route
                 path="/contacts"
-                element={<PrivateRoute component={Phonebook} />}
+                element={<PrivateRoute isAuth={isAuth} component={Phonebook} />}
               />
               <Route
                 path="/login"
-                element={<PublicRoute component={Login} />}
+                element={<PublicRoute isAuth={isAuth} component={Login} />}
               />
               <Route
                 path="/register"
-                element={<PublicRoute component={Register} />}
+                element={<PublicRoute isAuth={isAuth} component={Register} />}
               />
             </Routes>
           </Suspense>
