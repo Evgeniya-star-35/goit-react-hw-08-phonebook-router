@@ -23,7 +23,7 @@ const authSlice = createSlice({
       state.isAuth = true;
       // state.isGetCurrentUser = true;
     },
-    [logOut.fulfilled](state, { payload }) {
+    [logOut.fulfilled](state, _) {
       state.user = { name: '', email: '' };
       state.token = '';
       state.isAuth = false;
