@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import AppBar from '../AppBar/AppBar';
 import { getIsFetchCurrentUser } from '../../redux/auth/auth-selectors';
 import PrivateRoute from '../../routes/PrivateRoute';
@@ -39,6 +41,7 @@ const App = () => {
     !isFetchCurrentUser && (
       <>
         <AppBar />
+        <ToastContainer />
         <Container>
           <Suspense fallback={<Loader />}>
             <Routes>

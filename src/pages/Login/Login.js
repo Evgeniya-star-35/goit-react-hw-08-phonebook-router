@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { BtnSubmit } from '../../components/BtnSubmit/BtnSubmit';
 import { logIn } from '../../redux/auth/auth-operations';
 import { getIsAuth } from '../../redux/auth/auth-selectors';
@@ -25,6 +26,15 @@ export default function Login() {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(logIn({ email, password }));
+    toast.info('You are logged in!', {
+      position: 'top-center',
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     reset();
   };
   const reset = () => {

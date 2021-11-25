@@ -29,12 +29,11 @@ const authSlice = createSlice({
       state.isAuth = false;
     },
     [getCurrentUser.pending](state) {
-      state.isGetCurrentUser = true;
+      state.isGetCurrentUser = false;
     },
     [getCurrentUser.fulfilled](state, { payload }) {
       state.user = payload;
       state.isAuth = true;
-      state.isGetCurrentUser = false;
     },
     [getCurrentUser.rejected](state) {
       state.isGetCurrentUser = false;

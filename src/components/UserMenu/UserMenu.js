@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import LogoutIcon from '@mui/icons-material/Logout';
 import { logOut } from '../../redux/auth/auth-operations';
 import { getUserName } from '../../redux/auth/auth-selectors';
 import defaultAvatar from '../../images/user.jpg';
@@ -9,7 +8,9 @@ export default function UserMenu() {
   const dispatch = useDispatch();
   const name = useSelector(getUserName);
   const avatar = defaultAvatar;
-
+  const handleLogOut = () => {
+    dispatch(logOut());
+  };
   return (
     <div className={s.container}>
       <img
@@ -20,11 +21,7 @@ export default function UserMenu() {
         className={s.avatar}
       />
       <span className={s.name}>Welcome,{name}!</span>
-      <button
-        className={s.button}
-        type="button"
-        onClick={() => dispatch(logOut())}
-      >
+      <button className={s.button} type="button" onClick={handleLogOut}>
         Log out
       </button>
     </div>

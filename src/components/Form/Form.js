@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { getContacts } from '../../redux/Phonebook/phonebook-selectors';
 import { addContact } from '../../redux/Phonebook/phonebook-operations';
 import s from './Form.module.css';
@@ -35,6 +36,15 @@ export default function Form() {
     }
 
     dispatch(addContact({ name, number }));
+    toast.info('Contact added to the phonebook!', {
+      position: 'top-center',
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     reset();
   };
 

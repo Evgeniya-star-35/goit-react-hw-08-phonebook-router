@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/auth-operations';
+import { toast } from 'react-toastify';
 import { BtnSubmit } from '../../components/BtnSubmit/BtnSubmit';
 import s from './Register.module.css';
 
@@ -26,6 +27,15 @@ export default function RegisterView() {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(register({ name, email, password }));
+    toast.info('You are registered!', {
+      position: 'top-center',
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     reset();
   };
   const reset = () => {
