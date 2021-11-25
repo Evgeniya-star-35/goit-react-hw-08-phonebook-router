@@ -26,14 +26,9 @@ export default function Login() {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(logIn({ email, password }));
-    toast.info('You are logged in!', {
+    toast.success('You are logged in!', {
       position: 'top-center',
       autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
     });
     reset();
   };

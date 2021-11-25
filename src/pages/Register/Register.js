@@ -27,14 +27,9 @@ export default function RegisterView() {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(register({ name, email, password }));
-    toast.info('You are registered!', {
+    toast.success('You are registered!', {
       position: 'top-center',
       autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
     });
     reset();
   };

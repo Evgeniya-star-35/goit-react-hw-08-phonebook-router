@@ -36,14 +36,9 @@ export default function Form() {
     }
 
     dispatch(addContact({ name, number }));
-    toast.info('Contact added to the phonebook!', {
+    toast.success('Contact added to the phonebook!', {
       position: 'top-center',
       autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
     });
     reset();
   };

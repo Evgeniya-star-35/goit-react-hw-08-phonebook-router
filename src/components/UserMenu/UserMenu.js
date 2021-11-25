@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { logOut } from '../../redux/auth/auth-operations';
 import { getUserName } from '../../redux/auth/auth-selectors';
 import defaultAvatar from '../../images/user.jpg';
@@ -10,6 +11,10 @@ export default function UserMenu() {
   const avatar = defaultAvatar;
   const handleLogOut = () => {
     dispatch(logOut());
+    toast.info('You logged out of your account !', {
+      position: 'top-center',
+      autoClose: 4000,
+    });
   };
   return (
     <div className={s.container}>
