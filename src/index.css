@@ -18,11 +18,7 @@ body {
   width: 100vw;
   height: 100vh;
 }
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+
 
 
 code {
