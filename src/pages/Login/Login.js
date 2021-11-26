@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { BtnSubmit } from '../../components/BtnSubmit/BtnSubmit';
 import { logIn } from '../../redux/auth/auth-operations';
@@ -28,7 +29,7 @@ export default function Login() {
     dispatch(logIn({ email, password }));
     toast.success('You are logged in!', {
       position: 'top-center',
-      autoClose: 4000,
+      autoClose: 3000,
     });
     reset();
   };
@@ -36,39 +37,37 @@ export default function Login() {
     setEmail('');
     setPassword('');
   };
-  return (
-    !isAuth && (
-      <>
-        <h2 className={s.title}>Login Form</h2>
+  return !isAuth ? (
+    <>
+      <h2 className={s.title}>Login Form</h2>
 
-        <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
-          <label className={s.label}>
-            Email
-            <input
-              className={s.input}
-              type="email"
-              name="email"
-              value={email}
-              placeholder="Your email"
-              onChange={handleChange}
-            />
-          </label>
-          <label className={s.label}>
-            Password
-            <input
-              className={s.input}
-              type="password"
-              name="password"
-              value={password}
-              placeholder="Your password"
-              onChange={handleChange}
-            />
-          </label>
-          <BtnSubmit />
-
-          {/* <button type="submit">Sign in</button> */}
-        </form>
-      </>
-    )
+      <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
+        <label className={s.label}>
+          Email
+          <input
+            className={s.input}
+            type="email"
+            name="email"
+            value={email}
+            placeholder="Your email"
+            onChange={handleChange}
+          />
+        </label>
+        <label className={s.label}>
+          Password
+          <input
+            className={s.input}
+            type="password"
+            name="password"
+            value={password}
+            placeholder="Your password"
+            onChange={handleChange}
+          />
+        </label>
+        <BtnSubmit />
+      </form>
+    </>
+  ) : (
+    <Navigate to="/contacts" />
   );
 }

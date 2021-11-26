@@ -1,5 +1,5 @@
 import Contact from '../Contact';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredContacts } from '../../redux/Phonebook/phonebook-selectors';
@@ -21,7 +21,7 @@ export default function ContactsList() {
     dispatch(deleteContact(id));
     toast.success('Contact deleted!', {
       position: 'top-center',
-      autoClose: 4000,
+      autoClose: 3000,
     });
   };
 
