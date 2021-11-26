@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import s from './Contact.module.css';
-export default function Contact({ name, number, id }) {
+export default function Contact({ name, number }) {
   return (
     <>
       <span className={s.name}>{name}:</span>

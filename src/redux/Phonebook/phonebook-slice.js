@@ -10,7 +10,6 @@ import { changeFilter } from './phonebook-actions';
 const initialContactsState = {
   contacts: [],
   isLoading: false,
-  //   filter: '',
   error: null,
 };
 
