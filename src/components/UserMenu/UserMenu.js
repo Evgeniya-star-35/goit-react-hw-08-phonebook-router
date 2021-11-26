@@ -13,7 +13,7 @@ export default function UserMenu() {
     dispatch(logOut());
     toast.info('You logged out of your account !', {
       position: 'top-center',
-      autoClose: 4000,
+      autoClose: 2500,
     });
   };
   return (

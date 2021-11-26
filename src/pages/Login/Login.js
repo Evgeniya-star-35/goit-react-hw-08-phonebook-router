@@ -29,7 +29,7 @@ export default function Login() {
     dispatch(logIn({ email, password }));
     toast.success('You are logged in!', {
       position: 'top-center',
-      autoClose: 3000,
+      autoClose: 2500,
     });
     reset();
   };

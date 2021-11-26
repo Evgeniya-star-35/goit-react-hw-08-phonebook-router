@@ -29,7 +29,7 @@ export default function RegisterView() {
     dispatch(register({ name, email, password }));
     toast.success('You are registered!', {
       position: 'top-center',
-      autoClose: 3000,
+      autoClose: 2500,
     });
     reset();
   };

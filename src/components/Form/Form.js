@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getContacts } from '../../redux/Phonebook/phonebook-selectors';
-import { addContact } from '../../redux/Phonebook/phonebook-operations';
+import { contactsOperations } from '../../redux/Phonebook';
 import s from './Form.module.css';
 
 export default function Form() {
@@ -35,10 +35,10 @@ export default function Form() {
       return alert(`${name} is already in the directory`);
     }
 
-    dispatch(addContact({ name, number }));
+    dispatch(contactsOperations.addContact({ name, number }));
     toast.success('Contact added to the phonebook!', {
       position: 'top-center',
-      autoClose: 4000,
+      autoClose: 2500,
     });
     reset();
   };
