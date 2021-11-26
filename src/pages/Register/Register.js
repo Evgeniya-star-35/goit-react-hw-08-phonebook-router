@@ -1,12 +1,16 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router';
+import { getIsAuth } from '../../redux/auth/auth-selectors';
+
 import { register } from '../../redux/auth/auth-operations';
 import { toast } from 'react-toastify';
 import { BtnSubmit } from '../../components/BtnSubmit/BtnSubmit';
 import s from './Register.module.css';
 
-export default function RegisterView() {
+export default function Register() {
   const dispatch = useDispatch();
+  const isAuth = useSelector(getIsAuth);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -80,6 +84,7 @@ export default function RegisterView() {
         <BtnSubmit />
         {/* <button type="submit">Sign up</button> */}
       </form>
+      {isAuth && <Navigate to="/" />}
     </>
   );
 }
