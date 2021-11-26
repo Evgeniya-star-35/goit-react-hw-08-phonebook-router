@@ -16,10 +16,10 @@
     "phonebook-page.js": "/static/js/phonebook-page.ca2e7aa5.chunk.js",
     "phonebook-page.js.map": "/static/js/phonebook-page.ca2e7aa5.chunk.js.map",
     "register-page.css": "/static/css/register-page.e586908c.chunk.css",
-    "register-page.js": "/static/js/register-page.f045a552.chunk.js",
-    "register-page.js.map": "/static/js/register-page.f045a552.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.80fafd69.js",
-    "runtime-main.js.map": "/static/js/runtime-main.80fafd69.js.map",
+    "register-page.js": "/static/js/register-page.fd444c41.chunk.js",
+    "register-page.js.map": "/static/js/register-page.fd444c41.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1d095b44.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1d095b44.js.map",
     "static/css/7.e6c7ef2b.chunk.css": "/static/css/7.e6c7ef2b.chunk.css",
     "static/js/7.b32f8272.chunk.js": "/static/js/7.b32f8272.chunk.js",
     "static/js/7.b32f8272.chunk.js.map": "/static/js/7.b32f8272.chunk.js.map",
@@ -36,7 +36,7 @@
     "static/media/user.96db366d.jpg": "/static/media/user.96db366d.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.80fafd69.js",
+    "static/js/runtime-main.1d095b44.js",
     "static/css/7.e6c7ef2b.chunk.css",
     "static/js/7.b32f8272.chunk.js",
     "static/css/main.11aac963.chunk.css",
