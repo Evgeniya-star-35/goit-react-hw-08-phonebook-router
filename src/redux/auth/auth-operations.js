@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 
 import authActions from './auth-actions';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -12,10 +11,8 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
-
 export const register = userData => dispatch => {
   dispatch(authActions.registerRequest());
-
   axios
     .post('/users/signup', userData)
     .then(response => {
@@ -24,10 +21,8 @@ export const register = userData => dispatch => {
     })
     .catch(error => dispatch(authActions.registerError(error)));
 };
-
 export const logIn = userData => dispatch => {
   dispatch(authActions.logInRequest());
-
   axios
     .post('/users/login', userData)
     .then(response => {
@@ -39,28 +34,22 @@ export const logIn = userData => dispatch => {
       toast.error(error.message);
     });
 };
-
 export const getCurrentUser = () => (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
   } = getState();
-
   if (!persistedToken) {
     return;
   }
-
   token.set(persistedToken);
   dispatch(authActions.getCurrentUserRequest());
-
   axios
     .get('/users/current')
     .then(({ data }) => dispatch(authActions.getCurrentUserSuccess(data)))
     .catch(error => authActions.getCurrentUserError(error));
 };
-
 export const logOut = () => dispatch => {
   dispatch(authActions.logoutRequest());
-
   axios
     .post('/users/logout')
     .then(() => {

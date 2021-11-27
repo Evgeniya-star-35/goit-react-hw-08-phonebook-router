@@ -8,7 +8,6 @@ import s from './ContactsList.module.css';
 export default function ContactsList() {
   const contacts = useSelector(getFilteredContacts);
   const dispatch = useDispatch();
-
   const handleDeleteContact = id => {
     dispatch(contactsOperations.deleteContact(id));
     toast.success('Contact deleted!', {
@@ -16,13 +15,11 @@ export default function ContactsList() {
       autoClose: 2500,
     });
   };
-
   return (
     <ul>
       {contacts.map(({ name, number, id }) => (
         <li className={s.item} key={id}>
           <Contact name={name} number={number} />
-
           <button
             className={s.button}
             type="button"

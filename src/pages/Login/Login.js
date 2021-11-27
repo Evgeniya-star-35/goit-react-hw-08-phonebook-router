@@ -16,7 +16,6 @@ export default function Login() {
   const isUserError = useSelector(isUserErrorRejected);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   useEffect(() => {
     setError(isUserError);
   }, [isUserError]);

@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchContacts } from '../../redux/Phonebook/phonebook-operations';
 import Form from '../../components/Form';
-
 import Filter from '../../components/Filter';
 import ContactList from '../../components/ContactsList';
 import s from './Phonebook.module.css';

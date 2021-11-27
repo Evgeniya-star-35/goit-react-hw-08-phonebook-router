@@ -13,7 +13,6 @@ export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'name':
@@ -26,7 +25,6 @@ export default function Register() {
         return;
     }
   };
-
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(register({ name, email, password }));
@@ -56,7 +54,6 @@ export default function Register() {
             onChange={handleChange}
           />
         </label>
-
         <label className={s.label}>
           Email
           <input
@@ -68,7 +65,6 @@ export default function Register() {
             onChange={handleChange}
           />
         </label>
-
         <label className={s.label}>
           Password
           <input

@@ -1,10 +1,10 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import AppBar from '../AppBar/AppBar';
 import {
   getIsFetchCurrentUser,
@@ -14,7 +14,6 @@ import PrivateRoute from '../../routes/PrivateRoute';
 import PublicRoute from '../../routes/PublicRoute';
 import Container from '../../components/Container';
 import { getCurrentUser } from '../../redux/auth/auth-operations';
-// import { fetchContacts } from '../../redux/Phonebook/phonebook-operations';
 
 const HomePage = lazy(() =>
   import(
@@ -38,7 +37,6 @@ const App = () => {
   const dispatch = useDispatch();
   const isFetchCurrentUser = useSelector(getIsFetchCurrentUser);
   const isAuth = useSelector(getIsAuth);
-
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);

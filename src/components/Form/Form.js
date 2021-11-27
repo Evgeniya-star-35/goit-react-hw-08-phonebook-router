@@ -10,7 +10,6 @@ export default function Form() {
   const [number, setNumber] = useState('');
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
-
   const handleInputChange = e => {
     const { name, value } = e.target;
     switch (name) {
@@ -24,7 +23,6 @@ export default function Form() {
         return;
     }
   };
-
   const handleSubmit = e => {
     e.preventDefault();
     const comparableElement = contacts.some(
@@ -34,7 +32,6 @@ export default function Form() {
       reset();
       return alert(`${name} is already in the directory`);
     }
-
     dispatch(contactsOperations.addContact({ name, number }));
     toast.success('Contact added to the phonebook!', {
       position: 'top-center',
@@ -47,7 +44,6 @@ export default function Form() {
     setName('');
     setNumber('');
   };
-
   return (
     <form className={s.form} onSubmit={handleSubmit}>
       <label className={s.label}>
