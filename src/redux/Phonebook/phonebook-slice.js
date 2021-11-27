@@ -11,7 +11,7 @@ const contactsSlice = createSlice({
     contacts: [],
     isLoading: false,
     filter: '',
-    error: null,
+    // error: null,
   },
   reducers: {
     changeFilter: (state, action) => {

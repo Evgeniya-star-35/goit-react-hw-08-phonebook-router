@@ -1,10 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logOut, logIn, getCurrentUser } from './auth-operations';
-
+import authActions from './auth-actions';
+const {
+  registerRequest,
+  registerSuccess,
+  registerError,
+  logInSuccess,
+  logInError,
+  logoutSuccess,
+  getCurrentUserRequest,
+  getCurrentUserSuccess,
+  getCurrentUserError,
+} = authActions;
 const initialState = {
   user: { name: '', email: '' },
   token: '',
+  isLoading: false,
   isAuth: false,
+  error: null,
   isGetCurrentUser: false,
 };
 
@@ -12,29 +24,40 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    [register.fulfilled](state, { payload }) {
+    [registerSuccess]: (state, { payload }) => {
       state.user = payload.user;
       state.token = payload.token;
       state.isAuth = true;
     },
-    [logIn.fulfilled](state, { payload }) {
+    [registerRequest]: (state, _) => {
+      state.isLoading = true;
+    },
+    [registerError]: (state, action) => {
+      state.error = action.payload.message;
+    },
+    [logInSuccess]: (state, { payload }) => {
+      console.log(payload);
       state.user = payload.user;
       state.token = payload.token;
       state.isAuth = true;
     },
-    [logOut.fulfilled](state, _) {
+    [logInError]: (state, action) => {
+      state.error = action.payload;
+    },
+    [logoutSuccess]: (state, _) => {
       state.user = { name: '', email: '' };
       state.token = '';
       state.isAuth = false;
+      state.error = null;
     },
-    [getCurrentUser.pending](state) {
+    [getCurrentUserRequest]: state => {
       state.isGetCurrentUser = false;
     },
-    [getCurrentUser.fulfilled](state, { payload }) {
+    [getCurrentUserSuccess]: (state, { payload }) => {
       state.user = payload;
       state.isAuth = true;
     },
-    [getCurrentUser.rejected](state) {
+    [getCurrentUserError]: state => {
       state.isGetCurrentUser = false;
     },
   },

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router';
 import { getIsAuth } from '../../redux/auth/auth-selectors';
-
 import { register } from '../../redux/auth/auth-operations';
 import { toast } from 'react-toastify';
 import { BtnSubmit } from '../../components/BtnSubmit/BtnSubmit';
@@ -82,7 +81,6 @@ export default function Register() {
           />
         </label>
         <BtnSubmit />
-        {/* <button type="submit">Sign up</button> */}
       </form>
       {isAuth && <Navigate to="/" />}
     </>

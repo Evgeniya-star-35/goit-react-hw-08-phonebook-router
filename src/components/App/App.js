@@ -14,7 +14,7 @@ import PrivateRoute from '../../routes/PrivateRoute';
 import PublicRoute from '../../routes/PublicRoute';
 import Container from '../../components/Container';
 import { getCurrentUser } from '../../redux/auth/auth-operations';
-import { fetchContacts } from '../../redux/Phonebook/phonebook-operations';
+// import { fetchContacts } from '../../redux/Phonebook/phonebook-operations';
 
 const HomePage = lazy(() =>
   import(
@@ -41,7 +41,6 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getCurrentUser());
-    dispatch(fetchContacts());
   }, [dispatch]);
   return (
     !isFetchCurrentUser && (
