@@ -46,6 +46,7 @@ export default function Register() {
         <label className={s.label}>
           Name
           <input
+          required
             className={s.input}
             type="text"
             name="name"
@@ -57,6 +58,7 @@ export default function Register() {
         <label className={s.label}>
           Email
           <input
+          required
             className={s.input}
             type="email"
             name="email"
@@ -68,6 +70,9 @@ export default function Register() {
         <label className={s.label}>
           Password
           <input
+          required
+          minlength='8'
+          maxlength='30'
             className={s.input}
             type="password"
             name="password"

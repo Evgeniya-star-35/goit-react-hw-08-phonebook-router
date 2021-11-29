@@ -46,6 +46,8 @@
 .input:focus-within {
   border: 3px solid rgb(67, 140, 236);
 }
-    
+   input:invalid {
+     border:2px dashed red;
+   } 
 
 
