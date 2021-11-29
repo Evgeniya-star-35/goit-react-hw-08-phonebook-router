@@ -46,7 +46,7 @@ export default function Register() {
         <label className={s.label}>
           Name
           <input
-          required
+         required
             className={s.input}
             type="text"
             name="name"
