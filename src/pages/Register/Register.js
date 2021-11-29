@@ -71,8 +71,9 @@ export default function Register() {
           Password
           <input
           required
-          minlength='8'
-          maxlength='30'
+          pattern="[0-9a-fA-F]{8,}"
+          // minlength='8'
+          // maxlength='30'
             className={s.input}
             type="password"
             name="password"
