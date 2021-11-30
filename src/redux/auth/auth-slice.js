@@ -28,15 +28,17 @@ const authSlice = createSlice({
       state.user = payload.user;
       state.token = payload.token;
       state.isAuth = true;
+      state.error = null;
+      state.isLoading = false;
     },
     [registerRequest]: (state, _) => {
       state.isLoading = true;
     },
     [registerError]: (state, action) => {
-      state.error = action.payload.message;
+      state.error = action.payload;
+      state.isLoading = false;
     },
     [logInSuccess]: (state, { payload }) => {
-      console.log(payload);
       state.user = payload.user;
       state.token = payload.token;
       state.isAuth = true;

@@ -18,15 +18,9 @@ export const register = userData => dispatch => {
     .then(response => {
       token.set(response.data.token);
       dispatch(authActions.registerSuccess(response.data));
-      toast.success('You are registered!', {
-      position: 'top-center',
-      autoClose: 2500,
-    });
     })
     .catch(error =>{
        dispatch(authActions.registerError(error.message));
-
-     toast.info(error.message)
      }
      );
 };

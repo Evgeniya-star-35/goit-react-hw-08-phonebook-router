@@ -1,4 +1,4 @@
-import { useState,useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router';
 import { getIsAuth } from '../../redux/auth/auth-selectors';
@@ -13,7 +13,6 @@ export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const validate = useCallback(values => {
     const errors = {};
     if (!values.email) {
@@ -37,6 +36,7 @@ export default function Register() {
     }
     return errors;
   }, []);
+
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'name':
@@ -49,19 +49,26 @@ export default function Register() {
         return;
     }
   };
+
   const handleSubmit = e => {
     e.preventDefault();
-    if(validate) {
+    const validationErrors = validate({ name, email, password });
+    if (validationErrors.password === undefined) {
       dispatch(register({ name, email, password }));
-      
+      toast.success('You are registered!', {
+        position: 'top-center',
+        autoClose: 2500,
+      });
     }
-    if(!validate){
-      return  
-    
+    if (validationErrors.password !== undefined) {
+      toast.error(`${validationErrors.password}`, {
+        position: 'top-center',
+        autoClose: 4000,
+      });
     }
-    
     reset();
   };
+
   const reset = () => {
     setName('');
     setEmail('');
@@ -74,7 +81,6 @@ export default function Register() {
         <label className={s.label}>
           Name
           <input
-         
             className={s.input}
             type="text"
             name="name"
@@ -86,7 +92,6 @@ export default function Register() {
         <label className={s.label}>
           Email
           <input
-          
             className={s.input}
             type="email"
             name="email"
@@ -98,13 +103,12 @@ export default function Register() {
         <label className={s.label}>
           Password
           <input
-          required
-          
+            required
             className={s.input}
             type="password"
             name="password"
             value={password}
-            placeholder="Your password"
+            placeholder="Enter password"
             onChange={handleChange}
           />
         </label>
