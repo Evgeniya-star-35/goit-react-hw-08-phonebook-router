@@ -55,9 +55,8 @@ export default function Register() {
     const passwordErrors = validate({ password });
     const emailErrors = validate({ email });
     const nameErrors = validate({ name });
-    console.log(nameErrors);
+    console.log(nameErrors.name);
     if (passwordErrors.password !== undefined) {
-      console.log('errorPassword');
       toast.error(`${passwordErrors.password}`, {
         position: 'top-center',
         autoClose: 4000,
@@ -65,9 +64,9 @@ export default function Register() {
     }
     if (
       passwordErrors.password === undefined &&
-      emailErrors.email === undefined
+      emailErrors.email === undefined &&
+      nameErrors.name === undefined
     ) {
-      console.log('vse ok');
       dispatch(register({ name, email, password }));
       toast.success('You are registered!', {
         position: 'top-center',
@@ -75,9 +74,13 @@ export default function Register() {
       });
     }
     if (emailErrors.email !== undefined) {
-      console.log('errorEmail');
-      console.log(emailErrors.email);
       toast.error(`${emailErrors.email}`, {
+        position: 'top-center',
+        autoClose: 4000,
+      });
+    }
+    if (nameErrors.name !== undefined) {
+      return toast.error(`${nameErrors.name}`, {
         position: 'top-center',
         autoClose: 4000,
       });
