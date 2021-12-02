@@ -52,20 +52,37 @@ export default function Register() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const validationErrors = validate({ name, email, password });
-    if (validationErrors.password === undefined) {
+    const passwordErrors = validate({ password });
+    const emailErrors = validate({ email });
+    const nameErrors = validate({ name });
+    console.log(nameErrors);
+    if (passwordErrors.password !== undefined) {
+      console.log('errorPassword');
+      toast.error(`${passwordErrors.password}`, {
+        position: 'top-center',
+        autoClose: 4000,
+      });
+    }
+    if (
+      passwordErrors.password === undefined &&
+      emailErrors.email === undefined
+    ) {
+      console.log('vse ok');
       dispatch(register({ name, email, password }));
       toast.success('You are registered!', {
         position: 'top-center',
         autoClose: 2500,
       });
     }
-    if (validationErrors.password !== undefined) {
-      toast.error(`${validationErrors.password}`, {
+    if (emailErrors.email !== undefined) {
+      console.log('errorEmail');
+      console.log(emailErrors.email);
+      toast.error(`${emailErrors.email}`, {
         position: 'top-center',
         autoClose: 4000,
       });
     }
+
     reset();
   };
 
